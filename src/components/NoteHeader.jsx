@@ -1,9 +1,11 @@
 import React from "react";
+import SearchBar from "./SearchBar";
 
-function NoteHeader(){
+function NoteHeader({ onSearch }){
     return (
         <div className="noteapp-header">
-            <h1>NOTES APP</h1>
+            <h2>NOTES APP</h2>
+            <SearchBar onSearch={onSearch} />
         </div>
     )
 }

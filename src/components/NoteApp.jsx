@@ -9,36 +9,56 @@ class NoteApp extends React.Component {
         super(props);
         this.state = {
             notes: notesData(),
+            allNotes: notesData(),
         }
 
         this.onAddNoteHandler = this.onAddNoteHandler.bind(this);
+        this.onDeleteNoteHandler = this.onDeleteNoteHandler.bind(this);
+        this.onSearchHandler = this.onSearchHandler.bind(this);
+    }
+
+    onDeleteNoteHandler(id) {
+        const updatedAllNotes = this.state.allNotes.filter(note => note.id !== id);
+        const updatedNotes = this.state.notes.filter(note => note.id !== id);
+        this.setState({ 
+            notes: updatedNotes,
+            allNotes: updatedAllNotes,
+        });
     }
 
     onAddNoteHandler({ title, body }) {
+        const newNote = {
+            id: +new Date(),
+            title,
+            body,
+            createdAt: new Date().toISOString(),
+            archived: false,
+        }
+
         this.setState((prevState) => {
+            const updatedAllNotes = [...prevState.allNotes, newNote];
             return {
-                notes: [
-                    ...prevState.notes,
-                    {
-                        id: +new Date(),
-                        title,
-                        body,
-                        createdAt: new Date().toISOString(),
-                        archived: false,
-                    }
-                ]
+                notes: updatedAllNotes,
+                allNotes: updatedAllNotes,
             }
         })
+    }
+
+    onSearchHandler(keyword){
+        const filteredNotes = this.state.allNotes.filter((note) =>
+            note.title.toLowerCase().includes(keyword.toLowerCase())
+        );
+        this.setState({ notes: filteredNotes });
     }
 
     render() {
         return (
             <>
-            <NoteHeader/>
+            <NoteHeader onSearch={this.onSearchHandler}/>
             <div className="noteapp-body">
                 <NoteInput addNote={this.onAddNoteHandler} />
                 <h2>Catatan Aktif</h2>
-                <NoteList notes={this.state.notes}/>
+                <NoteList notes={this.state.notes} onDelete={this.onDeleteNoteHandler}/>
             </div>
             </>
         )

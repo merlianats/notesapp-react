@@ -17,24 +17,25 @@ input, textarea {
     padding: 10px;
     font-family: "Inter", sans-serif;
     background-color: #D3E0EA;
+    color: #3a3939;
 }
 
 .noteapp-header {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 17px 23px;
+    padding: 12px 23px;
     border-bottom: 1px solid #D3E0EA; 
 }
 
-.noteapp-header h1 {
+.noteapp-header h2 {
     margin: 6px 0;
+    font-size: 28px;
     flex: 1;
 }
 
 .note-input {
-    margin: 0 auto;
-    margin-bottom: 60px;
+    margin: 0 auto 36px auto;
     max-width: 500px;
 }
 
@@ -71,19 +72,19 @@ input, textarea {
 
 .noteapp-body {
     max-width: 1000px;
-    margin: 17px auto;
+    margin: 0 auto;
     padding: 17px;
 }
 
 .noteapp-body h2 {
-    margin: 17px auto;
+    margin: 0px auto 10px auto;
     font-weight: normal;
 }
 
 .note-list {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 15px;
+    gap: 20px;
     margin-bottom: 40px;
 }
 
@@ -116,4 +117,21 @@ input, textarea {
 .note-item__body {
     font-size: 16px;
     text-align: justify;
+}
+
+.note-item__button-delete {
+    display: block;
+    width: 100%;
+    background-color: transparent;
+    border: 0;
+    border-top: 1px solid #D3E0EA;
+    padding: 8px 0;
+    font-family: 'Inter', sans-serif;
+    font-weight: bold;
+    cursor: pointer;
+    color: #FFE69A;
+}
+
+.note-item__button-delete:hover {
+    color: #FFD24C;
 }
