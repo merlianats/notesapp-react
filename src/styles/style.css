@@ -1,0 +1,73 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family:  "Inter", sans-serif;
+    background-color: #2B3467;
+    color: #D3E0EA;
+}
+
+.noteapp-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 17px 23px;
+    border-bottom: 1px solid #D3E0EA; 
+}
+
+.noteapp-header h1 {
+    margin: 6px 0;
+    flex: 1;
+}
+
+.noteapp-body {
+    max-width: 1000px;
+    margin: 17px auto;
+    padding: 17px;
+}
+
+.noteapp-body h2 {
+    margin: 17px auto;
+    font-weight: normal;
+}
+
+.note-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: minmax(min-content, max-content);
+    gap: 15px;
+    margin-bottom: 40px;
+}
+
+.note-item {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border: 1px solid #D3E0EA;
+    border-radius: 5px;
+}
+
+.note-item__content {
+    flex: 1;
+    padding: 13px;
+}
+
+.note-item__title {
+    margin-bottom: 4px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.note-item__date {
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #aaa;
+}
+
+.note-item__body {
+    font-size: 16px;
+}
