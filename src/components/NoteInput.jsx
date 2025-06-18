@@ -39,10 +39,10 @@ class NoteInput extends React.Component {
         return (
             <form className='note-input' onSubmit={this.onSubmitEventHandler}>
                 <h2>Buat Catatan</h2>
-                <p className='note-input__title__char-limit'>sisa karakter : {50 - this.state.title.length}</p>
+                <p className='note-input__title__char-limit'>Sisa karakter : {50 - this.state.title.length}</p>
                 <input className="note-input-title" type="text" placeholder="Ini adalah judul ..." value={this.state.title} onChange={this.onTitleChangeEventHandler} maxLength={50} required />
                 <textarea className="note-input-body" placeholder="Tuliskan catatan mu disini ..." value={this.state.body} onChange={this.onBodyChangeEventHandler} required />
-                <button type="submit">Buat Catatan</button>
+                <button type="submit">Buat</button>
             </form>
         )
     }
