@@ -15,6 +15,7 @@ class NoteApp extends React.Component {
         this.onAddNoteHandler = this.onAddNoteHandler.bind(this);
         this.onDeleteNoteHandler = this.onDeleteNoteHandler.bind(this);
         this.onSearchHandler = this.onSearchHandler.bind(this);
+        this.onArchiveNoteHandler = this.onArchiveNoteHandler.bind(this);
     }
 
     onDeleteNoteHandler(id) {
@@ -44,6 +45,17 @@ class NoteApp extends React.Component {
         })
     }
 
+
+    onArchiveNoteHandler(id) {
+        const updatedAllNotes = this.state.allNotes.map((note) =>
+            note.id === id ? { ...note, archived: !note.archived } : note
+        );
+        this.setState({
+            allNotes: updatedAllNotes,
+            notes: updatedAllNotes
+        });
+    }
+
     onSearchHandler(keyword){
         const filteredNotes = this.state.allNotes.filter((note) =>
             note.title.toLowerCase().includes(keyword.toLowerCase())
@@ -52,13 +64,20 @@ class NoteApp extends React.Component {
     }
 
     render() {
+        const activeNotes = this.state.notes.filter((note) => !note.archived);
+        const archivedNotes = this.state.notes.filter((note) => note.archived);
+
         return (
             <>
             <NoteHeader onSearch={this.onSearchHandler}/>
             <div className="noteapp-body">
                 <NoteInput addNote={this.onAddNoteHandler} />
-                <h2>Catatan Aktif</h2>
-                <NoteList notes={this.state.notes} onDelete={this.onDeleteNoteHandler}/>
+
+                <h2>Active Notes</h2>
+                <NoteList notes={activeNotes} onDelete={this.onDeleteNoteHandler} onArchive={this.onArchiveNoteHandler}/>
+                
+                <h2>Archive Notes</h2>
+                <NoteList notes={archivedNotes} onDelete={this.onDeleteNoteHandler} onArchive={this.onArchiveNoteHandler}/>
             </div>
             </>
         )

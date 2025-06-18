@@ -23,8 +23,8 @@ input, textarea {
 .noteapp-header {
     display: flex;
     align-items: center;
-    justify-content: center;
-    padding: 12px 23px;
+    justify-content: space-between;
+    padding: 9px 23px;
     border-bottom: 1px solid #D3E0EA; 
 }
 
@@ -35,7 +35,7 @@ input, textarea {
 }
 
 .note-input {
-    margin: 0 auto 36px auto;
+    margin: 0 auto 10px auto;
     max-width: 500px;
 }
 
@@ -134,4 +134,59 @@ input, textarea {
 
 .note-item__button-delete:hover {
     color: #FFD24C;
+}
+
+.note-item__button-archive {
+    width: 100%;
+    background-color: transparent;
+    border: 0;
+    border-top: 1px solid #D3E0EA;
+    border-left: 1px solid #D3E0EA;
+    color: #F87474;
+    padding: 8px 0;
+    font-family: 'Inter', sans-serif;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.note-item__button-archive:hover {
+    color: #EB455F;
+}
+
+.note-search {
+    display: flex;
+    justify-content: flex-end;
+    flex: 1;
+}
+
+.note-search input {
+    width: 100%;
+    max-width: 400px;
+    padding: 10px;
+    font-size: 14px;
+    border-radius: 7px;
+    border: 1px solid #D3E0EA;
+    background-color: #D3E0EA;
+    color: #3a3939;
+}
+
+.note-item__action {
+    display: flex;
+}
+
+@media (max-width: 600px) {
+    .note-search input {
+        max-width: 100%;
+        font-size: 14px;
+    }
+
+    .noteapp-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .noteapp-header h2 {
+        font-size: 22px;
+    }
 }
